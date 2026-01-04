@@ -5,12 +5,12 @@
   <link href="https://lzwpluto.github.io/" rel="alternate" type="text/html"/>
   <link href="https://lzwpluto.github.io/atom.xml" rel="self" type="application/atom+xml"/>
   <id>https://lzwpluto.github.io/</id>
-  <updated>2026-01-04T09:06:37.745Z</updated>
+  <updated>2026-01-04T09:28:24.639Z</updated>
   <language>zh_CN</language>
   <entry>
     <title>云端同步测试</title>
-    <link href="https://lzwpluto.github.io/Pluto-blog/posts/%E4%BA%91%E7%AB%AF%E5%90%8C%E6%AD%A5%E6%B5%8B%E8%AF%95/" rel="alternate" type="text/html"/>
-    <id>https://lzwpluto.github.io/Pluto-blog/posts/%E4%BA%91%E7%AB%AF%E5%90%8C%E6%AD%A5%E6%B5%8B%E8%AF%95/</id>
+    <link href="https://lzwpluto.github.io/posts/%E4%BA%91%E7%AB%AF%E5%90%8C%E6%AD%A5%E6%B5%8B%E8%AF%95/" rel="alternate" type="text/html"/>
+    <id>https://lzwpluto.github.io/posts/%E4%BA%91%E7%AB%AF%E5%90%8C%E6%AD%A5%E6%B5%8B%E8%AF%95/</id>
     <published>2026-01-04T00:00:00.000Z</published>
     <updated>2026-01-04T00:00:00.000Z</updated>
     <summary>测试一下云端同步</summary>
@@ -23,8 +23,8 @@
   </entry>
   <entry>
     <title>测试2</title>
-    <link href="https://lzwpluto.github.io/Pluto-blog/posts/%E6%B5%8B%E8%AF%952/" rel="alternate" type="text/html"/>
-    <id>https://lzwpluto.github.io/Pluto-blog/posts/%E6%B5%8B%E8%AF%952/</id>
+    <link href="https://lzwpluto.github.io/posts/%E6%B5%8B%E8%AF%952/" rel="alternate" type="text/html"/>
+    <id>https://lzwpluto.github.io/posts/%E6%B5%8B%E8%AF%952/</id>
     <published>2026-01-04T00:00:00.000Z</published>
     <updated>2026-01-04T00:00:00.000Z</updated>
     <summary>测试</summary>
@@ -37,8 +37,8 @@
   </entry>
   <entry>
     <title>Arch Linux 极简安装步骤指南</title>
-    <link href="https://lzwpluto.github.io/Pluto-blog/posts/test/" rel="alternate" type="text/html"/>
-    <id>https://lzwpluto.github.io/Pluto-blog/posts/test/</id>
+    <link href="https://lzwpluto.github.io/posts/test/" rel="alternate" type="text/html"/>
+    <id>https://lzwpluto.github.io/posts/test/</id>
     <published>2026-01-03T00:00:00.000Z</published>
     <updated>2026-01-03T00:00:00.000Z</updated>
     <summary>适配新手的 Arch Linux 极简安装流程，覆盖 UEFI 引导、分区、基础配置核心步骤，步骤清晰可直接跟随操作</summary>
@@ -262,8 +262,8 @@ pacman -S nvidia nvidia-utils</p>
   </entry>
   <entry>
     <title>Simple Guides for Mizuki</title>
-    <link href="https://lzwpluto.github.io/Pluto-blog/posts/guide/" rel="alternate" type="text/html"/>
-    <id>https://lzwpluto.github.io/Pluto-blog/posts/guide/</id>
+    <link href="https://lzwpluto.github.io/posts/guide/" rel="alternate" type="text/html"/>
+    <id>https://lzwpluto.github.io/posts/guide/</id>
     <published>2024-04-01T00:00:00.000Z</published>
     <updated>2024-04-01T00:00:00.000Z</updated>
     <summary>How to use this blog template.</summary>
