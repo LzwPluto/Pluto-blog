@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Pluto</title>
+  <subtitle>One demo website</subtitle>
+  <link href="https://lzwpluto.github.io/" rel="alternate" type="text/html"/>
+  <link href="https://lzwpluto.github.io/atom.xml" rel="self" type="application/atom+xml"/>
+  <id>https://lzwpluto.github.io/</id>
+  <updated>2026-01-04T08:46:28.987Z</updated>
+  <language>zh_CN</language>
+  <entry>
+    <title>云端同步测试</title>
+    <link href="https://lzwpluto.github.io/Pluto-blog/posts/%E4%BA%91%E7%AB%AF%E5%90%8C%E6%AD%A5%E6%B5%8B%E8%AF%95/" rel="alternate" type="text/html"/>
+    <id>https://lzwpluto.github.io/Pluto-blog/posts/%E4%BA%91%E7%AB%AF%E5%90%8C%E6%AD%A5%E6%B5%8B%E8%AF%95/</id>
+    <published>2026-01-04T00:00:00.000Z</published>
+    <updated>2026-01-04T00:00:00.000Z</updated>
+    <summary>测试一下云端同步</summary>
+    <content type="html"><![CDATA[<p>#测试云端同步</p>
+]]></content>
+    <author>
+      <name>Pluto</name>
+    </author>
+    <category term="技术笔记"></category>
+  </entry>
+  <entry>
+    <title>测试2</title>
+    <link href="https://lzwpluto.github.io/Pluto-blog/posts/%E6%B5%8B%E8%AF%952/" rel="alternate" type="text/html"/>
+    <id>https://lzwpluto.github.io/Pluto-blog/posts/%E6%B5%8B%E8%AF%952/</id>
+    <published>2026-01-04T00:00:00.000Z</published>
+    <updated>2026-01-04T00:00:00.000Z</updated>
+    <summary>测试</summary>
+    <content type="html"><![CDATA[<p>请在这里编写你的文章内容（Markdown格式）...</p>
+]]></content>
+    <author>
+      <name>Pluto</name>
+    </author>
+    <category term="技术"></category>
+  </entry>
+  <entry>
+    <title>Arch Linux 极简安装步骤指南</title>
+    <link href="https://lzwpluto.github.io/Pluto-blog/posts/test/" rel="alternate" type="text/html"/>
+    <id>https://lzwpluto.github.io/Pluto-blog/posts/test/</id>
+    <published>2026-01-03T00:00:00.000Z</published>
+    <updated>2026-01-03T00:00:00.000Z</updated>
+    <summary>适配新手的 Arch Linux 极简安装流程，覆盖 UEFI 引导、分区、基础配置核心步骤，步骤清晰可直接跟随操作</summary>
+    <content type="html"><![CDATA[<p>Arch Linux 以轻量、灵活、滚动更新为核心特色，适合有基础 Linux 认知的用户使用。本文整理极简安装流程，聚焦 UEFI 引导模式下的核心步骤，省略非必要优化，帮助快速完成系统部署，全程附带命令注释和注意事项。</p>
+<p>一、安装前准备</p>
+<ol>
+<li>
+<p>下载 Arch Linux 镜像：前往Arch Linux 官网 下载最新镜像，推荐选择国内镜像源（如阿里云、清华大学镜像）提升下载速度。</p>
+</li>
+<li>
+<p>制作启动 U 盘：</p>
+</li>
+</ol>
+<ul>
+<li>
+<p>Windows 系统：使用 Rufus，选择下载的镜像文件，分区类型设为「GPT」，目标系统类型选「UEFI」，点击「开始」写入。</p>
+</li>
+<li>
+<p>Linux/macOS 系统：使用 BalenaEtcher 或 dd 命令（sudo dd if=archlinux.iso of=/dev/sdX bs=4M status=progress，注意将 /dev/sdX 替换为 U 盘设备名）。</p>
+</li>
+</ul>
+<ol>
+<li>
+<p>确认硬件条件：目标设备支持 UEFI 启动（进入 BIOS/UEFI 界面可查看），预留至少 20GB 磁盘空间，提前准备有线网络（无线网络需后续额外配置）。</p>
+</li>
+<li>
+<p>备份数据：安装过程会格式化磁盘，务必备份目标磁盘上的重要数据。</p>
+</li>
+</ol>
+<p>二、开始安装（进入 Live 环境）</p>
+<ol>
+<li>启动并进入 Arch Live 环境</li>
+</ol>
+<p>将制作好的启动 U 盘插入目标设备，开机选择从 U 盘启动，进入 Arch Linux 启动菜单后，选择「Arch Linux install medium (x86_64, UEFI)」，等待加载完成后进入命令行 Live 环境（默认以 root 用户登录）。</p>
+<ol>
+<li>验证 UEFI 启动模式</li>
+</ol>
+<p>执行以下命令，若能列出目录内容，说明当前为 UEFI 模式，符合后续安装要求；若目录不存在，需切换为 UEFI 启动或调整为 BIOS 安装流程：</p>
+<p>ls /sys/firmware/efi/efivars</p>
+<ol>
+<li>配置网络连接</li>
+</ol>
+<p>网络连接是安装的核心前提，优先使用有线网络（插上网线即可自动获取 IP），无线网络需手动配置：</p>
+<p>（1）验证网络连通性</p>
+<p>ping baidu.com -c 3  #  ping 3 次百度，成功返回则网络正常</p>
+<p>（2）无线网络配置（无有线时）</p>
+<p>iwctl  # 进入无线管理交互模式
+device list  # 列出无线设备（通常为 wlan0）
+station wlan0 scan  # 扫描周边 WiFi
+station wlan0 get-networks  # 显示可用 WiFi 名称
+station wlan0 connect "WiFi名称"  # 连接 WiFi，按提示输入密码
+exit  # 退出 iwctl 模式</p>
+<ol>
+<li>磁盘分区（UEFI + GPT 分区表）</li>
+</ol>
+<p>使用 cfdisk 工具进行分区，以目标磁盘为 /dev/sda 为例（实际使用时需通过 lsblk 命令确认磁盘名称，避免误操作）：</p>
+<p>cfdisk /dev/sda  # 进入分区工具，选择 GPT 分区表</p>
+<p>推荐分区方案（适用于单系统）：</p>
+<p>分区路径</p>
+<p>分区大小</p>
+<p>分区类型</p>
+<p>用途</p>
+<p>/dev/sda1</p>
+<p>512M</p>
+<p>EFI System</p>
+<p>UEFI 引导分区</p>
+<p>/dev/sda2</p>
+<p>剩余全部空间</p>
+<p>Linux filesystem</p>
+<p>根分区（/）</p>
+<p>分区操作步骤：</p>
+<ol>
+<li>
+<p>在 cfdisk 界面，选择「Free space」，按 Enter 键选择「New」，输入分区大小（如 512M），创建 EFI 分区。</p>
+</li>
+<li>
+<p>选中新建的分区，按 Enter 键选择「Type」，找到「EFI System」并确认。</p>
+</li>
+<li>
+<p>选中剩余的 Free space，重复步骤 1 创建根分区，分区类型默认「Linux filesystem」即可。</p>
+</li>
+<li>
+<p>选择「Write」，输入 yes 确认写入分区表，然后选择「Quit」退出 cfdisk。</p>
+</li>
+<li>
+<p>格式化分区</p>
+</li>
+</ol>
+<p>分区完成后，对每个分区进行格式化（EFI 分区格式化为 FAT32，根分区格式化为 ext4）：</p>
+<p>mkfs.fat -F32 /dev/sda1  # 格式化 EFI 分区
+mkfs.ext4 /dev/sda2      # 格式化根分区（会清除数据，确认无误再执行）</p>
+<ol>
+<li>挂载分区</li>
+</ol>
+<p>先挂载根分区到 /mnt，再创建 EFI 分区挂载目录并挂载：</p>
+<p>mount /dev/sda2 /mnt  # 挂载根分区
+mkdir -p /mnt/boot/efi  # 创建 EFI 分区挂载目录
+mount /dev/sda1 /mnt/boot/efi  # 挂载 EFI 分区</p>
+<ol>
+<li>安装基础系统组件</li>
+</ol>
+<p>使用 pacstrap 命令安装基础系统、内核、固件等核心组件：</p>
+<p>pacstrap /mnt base linux linux-firmware base-devel vim networkmanager</p>
+<p>组件说明：</p>
+<ul>
+<li>
+<p>base：Arch Linux 基础系统组件，必装。</p>
+</li>
+<li>
+<p>linux：Linux 内核，必装。</p>
+</li>
+<li>
+<p>linux-firmware：硬件固件，解决多数网卡、显卡等硬件兼容性问题。</p>
+</li>
+<li>
+<p>base-devel：开发工具集，后续安装软件时可能需要。</p>
+</li>
+<li>
+<p>vim：文本编辑器，用于后续配置文件修改。</p>
+</li>
+<li>
+<p>networkmanager：网络管理工具，后续管理有线/无线网络。</p>
+</li>
+</ul>
+<ol>
+<li>生成 fstab 文件（自动挂载分区）</li>
+</ol>
+<p>fstab 文件用于系统启动时自动挂载分区，执行以下命令生成并写入：</p>
+<p>genfstab -U /mnt &gt;&gt; /mnt/etc/fstab</p>
+<p>生成后可通过以下命令验证，确保分区信息正确：</p>
+<p>cat /mnt/etc/fstab</p>
+<ol>
+<li>进入新安装的系统</li>
+</ol>
+<p>通过 arch-chroot 命令切换根目录到新安装的系统：</p>
+<p>arch-chroot /mnt</p>
+<ol>
+<li>系统基础配置</li>
+</ol>
+<p>（1）设置时区</p>
+<p>以上海时区为例，执行以下命令：</p>
+<p>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime  # 链接时区文件
+hwclock --systohc  # 同步系统时间到硬件时钟</p>
+<p>（2）配置本地化</p>
+<p>编辑 locale.gen 文件，取消 en_US.UTF-8 和 zh_CN.UTF-8 的注释（去掉前面的 #）：</p>
+<p>vim /etc/locale.gen</p>
+<p>保存退出后，生成 locale：</p>
+<p>locale-gen</p>
+<p>设置默认 locale：</p>
+<p>echo "LANG=en_US.UTF-8" &gt; /etc/locale.conf</p>
+<p>（3）设置主机名</p>
+<p>将「arch-pc」替换为你想要的主机名（如 my-arch）：</p>
+<p>echo "arch-pc" &gt; /etc/hostname</p>
+<p>（4）设置 root 密码</p>
+<p>执行以下命令，按提示输入并确认密码（密码输入时不显示，正常现象）：</p>
+<p>passwd</p>
+<ol>
+<li>安装并配置引导程序（GRUB）</li>
+</ol>
+<p>安装 GRUB 引导程序及 UEFI 相关组件：</p>
+<p>pacman -S grub efibootmgr</p>
+<p>将 GRUB 安装到 EFI 分区：</p>
+<p>grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=GRUB</p>
+<p>生成 GRUB 配置文件：</p>
+<p>grub-mkconfig -o /boot/grub/grub.cfg</p>
+<ol>
+<li>启用网络服务</li>
+</ol>
+<p>设置 NetworkManager 开机自启，确保系统启动后自动连接网络：</p>
+<p>systemctl enable NetworkManager
+systemctl start NetworkManager  # 立即启动网络服务</p>
+<ol>
+<li>完成安装，重启系统</li>
+</ol>
+<p>依次执行以下命令，退出 chroot 环境、卸载分区并重启：</p>
+<p>exit  # 退出 chroot 环境
+umount -R /mnt  # 卸载所有挂载的分区
+reboot  # 重启系统，重启前记得拔掉启动 U 盘</p>
+<p>三、后续优化（可选）</p>
+<ol>
+<li>
+<p>创建普通用户：root 用户权限过高，日常使用建议创建普通用户（将「username」替换为你的用户名）：useradd -m username  # 创建用户并生成家目录
+passwd username  # 为普通用户设置密码
+usermod -aG wheel username  # 将用户添加到 wheel 组（获取 sudo 权限）
+visudo  # 编辑 sudo 配置，取消 wheel 组注释（允许 wheel 组用户使用 sudo）</p>
+</li>
+<li>
+<p>安装桌面环境：若需要图形界面，可安装 GNOME、KDE 等桌面环境（以 GNOME 为例）：
+pacman -S gnome gdm
+systemctl enable gdm  # 启用 GDM 登录管理器，开机自动进入图形界面</p>
+</li>
+<li>
+<p>安装显卡驱动：根据显卡型号安装对应驱动（NVIDIA 显卡示例）：
+pacman -S nvidia nvidia-utils</p>
+</li>
+<li>
+<p>更换国内镜像源：编辑 /etc/pacman.d/mirrorlist，将国内镜像源（如阿里云、清华大学）放在前面，提升软件下载速度。</p>
+</li>
+</ol>
+<p>四、常见问题排查</p>
+<ol>
+<li>
+<p>网络连接失败：优先检查网线是否插好，无线连接需确认 WiFi 名称和密码正确；若扫描不到 WiFi，可能是缺少无线网卡固件，可重新进入 Live 环境，通过 pacstrap 安装对应的固件包。</p>
+</li>
+<li>
+<p>引导失败：检查 GRUB 安装步骤是否正确，可重新进入 Live 环境，挂载分区后重新生成 GRUB 配置文件（grub-mkconfig -o /boot/grub/grub.cfg）。</p>
+</li>
+<li>
+<p>系统启动后无网络：确认 NetworkManager 服务已启用，可通过 systemctl status NetworkManager 查看服务状态，异常则执行 systemctl restart NetworkManager 重启服务。</p>
+</li>
+<li>
+<p>分区时误操作：若误删分区，停止所有操作，可尝试使用 testdisk 工具恢复分区表（需提前准备 testdisk 工具或包含该工具的 Live 镜像）。</p>
+</li>
+</ol>
+<p>通过以上步骤即可完成 Arch Linux 的基础安装，后续可根据个人需求安装软件、配置环境。若需更详细的优化教程，可关注后续博客更新。</p>
+]]></content>
+    <author>
+      <name>Pluto</name>
+    </author>
+    <category term="技术笔记"></category>
+  </entry>
+  <entry>
+    <title>Simple Guides for Mizuki</title>
+    <link href="https://lzwpluto.github.io/Pluto-blog/posts/guide/" rel="alternate" type="text/html"/>
+    <id>https://lzwpluto.github.io/Pluto-blog/posts/guide/</id>
+    <published>2024-04-01T00:00:00.000Z</published>
+    <updated>2024-04-01T00:00:00.000Z</updated>
+    <summary>How to use this blog template.</summary>
+    <content type="html"><![CDATA[<p>This blog template is built with <a href="https://astro.build/">Astro</a>. For the things that are not mentioned in this guide, you may find the answers in the <a href="https://docs.astro.build/">Astro Docs</a>.</p>
+<h2>Front-matter of Posts</h2>
+<pre><code>---
+title: My First Blog Post
+published: 2023-09-09
+description: This is the first post of my new Astro blog.
+image: ./cover.jpg
+tags: [Foo, Bar]
+category: Front-end
+draft: false
+---
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Attribute</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>title</code></td>
+<td>The title of the post.</td>
+</tr>
+<tr>
+<td><code>published</code></td>
+<td>The date the post was published.</td>
+</tr>
+<tr>
+<td><code>pinned</code></td>
+<td>Whether this post is pinned to the top of the post list.</td>
+</tr>
+<tr>
+<td><code>priority</code></td>
+<td>The priority of the pinned post. Smaller value means higher priority (0, 1, 2...).</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>A short description of the post. Displayed on index page.</td>
+</tr>
+<tr>
+<td><code>image</code></td>
+<td>The cover image path of the post.&lt;br/&gt;1. Start with <code>http://</code> or <code>https://</code>: Use web image&lt;br/&gt;2. Start with <code>/</code>: For image in <code>public</code> dir&lt;br/&gt;3. With none of the prefixes: Relative to the markdown file</td>
+</tr>
+<tr>
+<td><code>tags</code></td>
+<td>The tags of the post.</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td>The category of the post.</td>
+</tr>
+<tr>
+<td><code>licenseName</code></td>
+<td>The license name for the post content.</td>
+</tr>
+<tr>
+<td><code>author</code></td>
+<td>The author of the post.</td>
+</tr>
+<tr>
+<td><code>sourceLink</code></td>
+<td>The source link or reference for the post content.</td>
+</tr>
+<tr>
+<td><code>draft</code></td>
+<td>If this post is still a draft, which won't be displayed.</td>
+</tr>
+</tbody>
+</table>
+<h2>Where to Place the Post Files</h2>
+<p>Your post files should be placed in <code>src/content/posts/</code> directory. You can also create sub-directories to better organize your posts and assets.</p>
+<pre><code>src/content/posts/
+├── post-1.md
+└── post-2/
+    ├── cover.png
+    └── index.md
+</code></pre>
+]]></content>
+    <author>
+      <name>Pluto</name>
+    </author>
+    <category term="Guides"></category>
+  </entry>
+</feed>

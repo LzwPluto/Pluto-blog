@@ -1,0 +1,1 @@
+import"./config.DxIHmaW5.js";import"./zh_TW.BW8a2Ucy.js";function l(o,e){const n=o.replace(/^\/|\/$/g,"").toLowerCase(),r=e.replace(/^\/|\/$/g,"").toLowerCase();return n===r}function t(...o){return o.join("/").replace(/\/+/g,"/")}function u(o){return t("","/Pluto-blog/",o)}export{l as p,u};
